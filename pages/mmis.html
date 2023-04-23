@@ -50,11 +50,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://byucamacholab.github.io/Photonics-Bootcamp/pages/mmis.html" />
     <link rel="shortcut icon" href="../_static/favicon-laser.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Directional Couplers" href="directional_couplers.html" />
+    <link rel="next" title="Compact Models" href="compact_models.html" />
+    <link rel="prev" title="Ring Resonators" href="ring_resonators.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -132,6 +135,28 @@ const thebe_selector_output = ".output, .cell_output"
    Open Source Software
   </a>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="software.html">
+   Software
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="git_and_github.html">
+     Git (and GitHub)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python.html">
+     Python
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -140,14 +165,80 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="what_is_a_photonic_device.html">
+   What is a Photonic Device?
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="digital_shape_representation.html">
+   Representing Physical Shapes Digitally
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gds_to_meep.html">
+     GDS to Meep
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="meep_to_gds.html">
+     Meep to GDS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="directional_couplers.html">
    Directional Couplers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="y_branch.html">
+   Y-Branches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ring_resonators.html">
+   Ring Resonators
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Multimode Interferometers (MMIs)
   </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Circuit Design and Simulation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="compact_models.html">
+   Compact Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scattering_parameters.html">
+     Scattering Parameters (S-Parameters)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -304,6 +395,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imaging-simulation">
+   Imaging Simulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mmi-applications">
    MMI Applications
   </a>
@@ -338,6 +434,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imaging-simulation">
+   Imaging Simulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mmi-applications">
    MMI Applications
   </a>
@@ -359,28 +460,149 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="multimode-interferometers-mmis">
 <h1>Multimode Interferometers (MMIs)<a class="headerlink" href="#multimode-interferometers-mmis" title="Permalink to this headline">#</a></h1>
-<p>MMIs are devices that are used to combine and split light in a predictable way. They are designed not only to output a certain fraction of the input power, but are also designed so that the outputs have a certain phase difference. The basic design of an MMI includes the multimode region (a.k.a the body of the MMI) and tapers that gradually widen the input and output waveguides as they go into this region. The multimode region can be thought of as a wide waveguide that supports many guided moded. MMIs are denoted by the number of input and output ports they have (# of input ports) x (# output ports). So, a 2x2 MMI will have two input and two output ports.</p>
-<p><strong>Insert gdsfactory image of mmi – 1x2,2x2</strong></p>
-<section id="self-imaging">
+<p>MMIs are devices that are used to combine and split light in a predictable way. They are designed not only to output a certain fraction of the input power, but are also designed so that the outputs have a certain phase difference.</p>
+<p>The basic design of an MMI includes the multimode region (a.k.a the body of the MMI) which is a multimode waveguide. To support more than three modes and be considered “multimode”, the waveguide is wider than a single mode waveguide. Tapers to gradually widen the input and output waveguides as they go in and out of this multimode region are also common. MMIs are denoted by the number of input and output ports they have, with an NxM MMI having N input ports and M output ports.</p>
+<div style="text-align: center;">
+<p><img alt="1x2mmi" src="https://github.com/BYUCamachoLab/Photonics-Bootcamp/blob/main/book/images/Notebook_Images/mmi1x2.png?raw=true" />
+<img alt="2x2mmi" src="https://github.com/BYUCamachoLab/Photonics-Bootcamp/blob/main/book/images/Notebook_Images/mmi2x2.png?raw=true" /></p>
+</div>
+<div style="text-align: center;">
+<p>A 1x2 and 2x2 MMI from GDSFactory</p>
+</div><section id="self-imaging">
 <h2>Self-Imaging<a class="headerlink" href="#self-imaging" title="Permalink to this headline">#</a></h2>
-<p>MMIs work on the principle of self-imaging. An “image” occurs when the electric fields at some distance in the MMI match the fields at the input. A wave is excited in one of the input ports and as light enters the multimode region, it scatters and interferes with itself as it reflects off of the walls of the MMI. As it either interferes constructively and destructively, a field pattern is created. At a certain length, these images are replicas of the input.</p>
-<ul class="simple">
-<li><p>Need pictures</p></li>
-<li><p>How to determine the length of the MMI body</p></li>
-</ul>
+<p>The function of an MMI is based of of self-imaging. An “image” is a place where the electric fields are replicas of the electric field of the input. They occur periodically in MMIs at a distance called the beat length, determined by the equation:</p>
+<div class="math notranslate nohighlight">
+\[L_{\pi} = \pi / (\beta _0 - \beta _1)\]</div>
+<p>The images are created from light reflecting off of the walls of the multimode region and interfering constructively or destructively with other reflections. This self-imaging is how MMIs are able to combine and split light. For example, if you wanted a 2x2 MMI that splits light from one input port into another, you would find the length at which there are two images present in the MMI, and put the output ports there.</p>
+<p>Self-imaging can work in this “forwards” way to split light and it can also work “backwards” to combine light. In other words, if you wanted to combine light with an MMI instead of split it, you could excite waves going into the output ports, and get a combined image of them at an input port based on the same principle of imaging.</p>
+</section>
+<section id="imaging-simulation">
+<h2>Imaging Simulation<a class="headerlink" href="#imaging-simulation" title="Permalink to this headline">#</a></h2>
+<p>In the Meep script below, change the length of the MMI to see how changing the length of the MMI affects the power that goes into each output port.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some sort of MMI simulation so can see self-imaging?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">meep</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">gdsfactory</span> <span class="k">as</span> <span class="nn">gf</span>
+<span class="kn">import</span> <span class="nn">tidy3d</span>
+<span class="kn">from</span> <span class="nn">gdsfactory.simulation.gmeep</span> <span class="kn">import</span> <span class="n">get_simulation</span>
+<span class="kn">from</span> <span class="nn">gdsfactory.simulation.gmeep.get_simulation</span> <span class="kn">import</span> <span class="n">get_meep_geometry_from_component</span>
+
+<span class="c1"># Define materials</span>
+<span class="n">Si</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Medium</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mf">3.45</span><span class="p">)</span>
+<span class="n">SiO2</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Medium</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mf">1.45</span><span class="p">)</span>
+
+<span class="c1"># Define wavelength in um</span>
+<span class="n">wvl</span> <span class="o">=</span> <span class="mf">1.55</span>
+
+<span class="c1"># # Define cell and geometric parameters</span>
+<span class="n">resolution</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">dpml</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">pad</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">## CHANGE THE MMI LENGTH SLIGHTLY TO SEE HOW THE POWER SPLITTING RATIO CHANGES ##</span>
+<span class="n">length_mmi</span> <span class="o">=</span> <span class="mf">5.5</span>
+<span class="n">mmi</span> <span class="o">=</span> <span class="n">gf</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">mmi2x2</span><span class="p">(</span><span class="n">length_mmi</span><span class="o">=</span><span class="n">length_mmi</span><span class="p">)</span>
+
+<span class="n">Sx</span> <span class="o">=</span> <span class="n">dpml</span> <span class="o">+</span> <span class="o">-</span><span class="p">(</span><span class="n">mmi</span><span class="o">.</span><span class="n">ports</span><span class="p">[</span><span class="s2">&quot;o1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">mmi</span><span class="o">.</span><span class="n">ports</span><span class="p">[</span><span class="s2">&quot;o4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">dpml</span>
+<span class="n">Sy</span> <span class="o">=</span> <span class="n">dpml</span> <span class="o">+</span> <span class="n">pad</span> <span class="o">+</span> <span class="o">-</span><span class="p">(</span><span class="n">mmi</span><span class="o">.</span><span class="n">ports</span><span class="p">[</span><span class="s2">&quot;o1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="o">-</span><span class="p">(</span><span class="n">mmi</span><span class="o">.</span><span class="n">ports</span><span class="p">[</span><span class="s2">&quot;o4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">pad</span> <span class="o">+</span> <span class="n">dpml</span>
+<span class="n">cell_size</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="n">Sx</span><span class="p">,</span><span class="n">Sy</span><span class="p">)</span>
+
+<span class="c1"># Extend the ports to match the length of the cell</span>
+<span class="n">mmi</span> <span class="o">=</span> <span class="n">gf</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">extend_ports</span><span class="p">(</span><span class="n">mmi</span><span class="p">,</span> <span class="n">port_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;o1&quot;</span><span class="p">,</span><span class="s2">&quot;o2&quot;</span><span class="p">,</span><span class="s2">&quot;o3&quot;</span><span class="p">,</span><span class="s2">&quot;o4&quot;</span><span class="p">],</span> <span class="n">length</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Add PML (perfectly matched layers)</span>
+<span class="n">pml</span> <span class="o">=</span> <span class="p">[</span><span class="n">mp</span><span class="o">.</span><span class="n">PML</span><span class="p">(</span><span class="n">dpml</span><span class="p">)]</span>
+
+<span class="c1"># Using the gdsfactory function, get the mmi geometry</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">get_meep_geometry_from_component</span><span class="p">(</span><span class="n">mmi</span><span class="p">)</span>
+
+<span class="c1"># Put a pulse Eigenmode source at beginning of one waveguide</span>
+<span class="n">fcen</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">wvl</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">fwidth</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">fcen</span>
+<span class="n">src</span><span class="o">=</span><span class="n">mp</span><span class="o">.</span><span class="n">GaussianSource</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="n">fcen</span><span class="p">,</span> <span class="n">fwidth</span><span class="o">=</span><span class="n">fwidth</span><span class="p">)</span>
+<span class="n">source</span> <span class="o">=</span> <span class="p">[</span><span class="n">mp</span><span class="o">.</span><span class="n">EigenModeSource</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">src</span><span class="p">,</span> <span class="n">eig_band</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">eig_kpoint</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">size</span><span class="o">=</span><span class="n">mp</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">center</span><span class="o">=</span><span class="n">mp</span><span class="o">.</span><span class="n">Vector3</span><span class="p">(</span><span class="o">-</span><span class="n">mmi</span><span class="o">.</span><span class="n">ports</span><span class="p">[</span><span class="s2">&quot;o1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">+</span><span class="n">dpml</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">mmi</span><span class="o">.</span><span class="n">ports</span><span class="p">[</span><span class="s2">&quot;o1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+        <span class="p">]</span>
+
+<span class="c1"># Create simulation dictionary</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">get_simulation</span><span class="p">(</span><span class="n">mmi</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">tpml</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">port_source_offset</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">port_monitor_offset</span><span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">distance_source_to_monitors</span><span class="o">=</span> <span class="mf">0.3</span><span class="p">,)</span>
+<span class="n">sim</span><span class="p">[</span><span class="s1">&#39;sim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sources</span> <span class="o">=</span> <span class="n">sim</span><span class="p">[</span><span class="s1">&#39;sources&#39;</span><span class="p">]</span>
+<span class="n">sim</span><span class="p">[</span><span class="s1">&#39;sim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cell_size</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Sy</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="n">sim</span><span class="p">[</span><span class="s1">&#39;sim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cell_size</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sx</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="c1"># Show simulation set-up</span>
+<span class="n">sim</span><span class="p">[</span><span class="s1">&#39;sim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot2D</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;X&#39;, ylabel=&#39;Y&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/mmis_3_1.png" src="../_images/mmis_3_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Capture electric field intensity over time and output into a gif</span>
+<span class="n">sim</span><span class="p">[</span><span class="s1">&#39;sim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">at_beginning</span><span class="p">(</span><span class="n">mp</span><span class="o">.</span><span class="n">output_epsilon</span><span class="p">),</span>
+        <span class="n">mp</span><span class="o">.</span><span class="n">to_appended</span><span class="p">(</span><span class="s2">&quot;ez&quot;</span><span class="p">,</span> <span class="n">mp</span><span class="o">.</span><span class="n">at_every</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">mp</span><span class="o">.</span><span class="n">output_efield_z</span><span class="p">)),</span>
+        <span class="n">until</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># Generate pngs from the simulation output</span>
+<span class="c1"># This line assumes that their colormaps are working and that they are in the same directory as the output files</span>
+<span class="c1"># also that h5py is installed</span>
+<span class="c1"># If you have a problem with h5utils, see note below</span>
+<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s2">&quot;h5topng -t 0:299 -R -Zc RdBu -A eps-000000.00.h5 -a gray ez.h5&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a gif from the pngs</span>
+<span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">imgs</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;ez.t*&quot;</span><span class="p">)</span>
+<span class="n">imgs</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">imgs</span><span class="p">:</span>
+    <span class="n">new_frame</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_frame</span><span class="p">)</span>
+
+ 
+<span class="c1"># Save into a GIF file that loops forever</span>
+<span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;ez.gif&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;GIF&#39;</span><span class="p">,</span>
+               <span class="n">append_images</span><span class="o">=</span><span class="n">frames</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+               <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Clean up workspace by deleting all generated images</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">imgs</span><span class="p">:</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
+<p>The resulting GIF shows how power is split evenly between the two output ports based on the imaging within the MMI.</p>
+<div style="text-align: center;">
+<p><img alt="2x2mmigif" src="https://github.com/BYUCamachoLab/Photonics-Bootcamp/blob/main/book/images/Notebook_Images/2x2mmi_ez.gif?raw=true" /></p>
+</div></section>
 <section id="mmi-applications">
 <h2>MMI Applications<a class="headerlink" href="#mmi-applications" title="Permalink to this headline">#</a></h2>
+<p>MMIs have the advantage of being robust, or not very susceptible to manufacturing errors. In fact, at the optimum length for the MMI, the sensitivity is at a minimum. This is in contrast to directional couplers, which may be able to mimic the operation of a 2x2 MMI, but have the disadvantage of being very susceptible to variations in length.</p>
+<p>Because of their robustness, MMIs are used in a variety of ways in photonic circuits, including but not limited to Mach-Zehnder optical switches, WDM (wavelength-division multiplexers), optical hybrids, and polarization-diversity photodetectors.</p>
 </section>
 <section id="sources">
 <h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=372474">https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=372474</a></p>
+<p><a class="reference external" href="https://opg.optica.org/ao/fulltext.cfm?uri=ao-33-18-3905&amp;id=41580">https://opg.optica.org/ao/fulltext.cfm?uri=ao-33-18-3905&amp;id=41580</a> (where got MMI length equation from)</p>
+<p><a class="reference external" href="https://opg.optica.org/view_article.cfm?pdfKey=21e37623-43e8-4d94-b871476935a89af0_41580">https://opg.optica.org/view_article.cfm?pdfKey=21e37623-43e8-4d94-b871476935a89af0_41580</a></p>
+<p><a class="reference external" href="https://arxiv.org/pdf/1405.6025.pdf">https://arxiv.org/pdf/1405.6025.pdf</a></p>
 </section>
 </section>
 
@@ -411,12 +633,19 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="directional_couplers.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ring_resonators.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Directional Couplers</p>
+            <p class="prev-next-title">Ring Resonators</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="compact_models.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compact Models</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; CamachoLab Photonics Bootcamp</title>
+    <title>Git (and GitHub) &#8212; CamachoLab Photonics Bootcamp</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,12 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://byucamacholab.github.io/Photonics-Bootcamp/pages/introduction.html" />
+    <link rel="canonical" href="https://byucamacholab.github.io/Photonics-Bootcamp/pages/git_and_github.html" />
     <link rel="shortcut icon" href="../_static/favicon-laser.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Credits" href="credits.html" />
-    <link rel="prev" title="CamachoLab Photonics Bootcamp" href="../index.html" />
+    <link rel="next" title="Python" href="python.html" />
+    <link rel="prev" title="Software" href="software.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -110,9 +110,9 @@ const thebe_selector_output = ".output, .cell_output"
   Front Matter
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
    Introduction
   </a>
  </li>
@@ -127,24 +127,24 @@ const thebe_selector_output = ".output, .cell_output"
   Getting Familiar with Code
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="open_source.html">
    Open Source Software
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="software.html">
    Software
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="git_and_github.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Git (and GitHub)
     </a>
    </li>
@@ -328,7 +328,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/pages/introduction.md"
+        <a href="../_sources/pages/git_and_github.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -377,7 +377,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>Git (and GitHub)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -389,55 +389,60 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<p>Welcome to the CamachoLab Photonics Bootcamp, created with support from Google.</p>
-<p>We present a new open-source, online and freely available set of course
-material and resources for teaching integrated photonic design and simulation
-to electrical engineers and students with an interest in photonic engineering.
-In collaboration with Google, we’ve designed a curriculum complete with
-background motivation material, code examples, component and system design
-problems, and full circuit examples that teach learners a series of open-source
-Python tools and guide them step-by-step through design, simulation, and
-modeling, giving them the resources and information on how to submit their
-devices for manufacturing should they wish to test their devices’ performance.
-Open-source tools include Meep <span id="id1">[<a class="reference internal" href="#id5" title="Ardavan F Oskooi, David Roundy, Mihai Ibanescu, Peter Bermel, John D Joannopoulos, and Steven G Johnson. Meep: a flexible free-software package for electromagnetic simulations by the fdtd method. Computer Physics Communications, 181(3):687–702, 2010.">1</a>]</span> for FDTD simulation,
-Simphony <span id="id2">[<a class="reference internal" href="#id6" title="Sequoia Ploeg, Hyrum Gunther, and Ryan M Camacho. Simphony: an open-source photonic integrated circuit simulation framework. Computing in Science &amp; Engineering, 23(1):65–74, 2020.">2</a>]</span> for creating compact models and simulating
-larger circuits, and GDS Factory <span id="id3">[<a class="reference internal" href="#id7" title="Joaquin Matres. Gdsfactory documentation. online, 2023. URL: https://gdsfactory.github.io/gdsfactory/.">3</a>]</span> for layout of GDS files
-for submission to fabrication facilities. Introductions to open-source software
-for testing PICs post-fabrication and instructional material on analyzing the
-results are also included in the course.</p>
-<p>The course is hosted on GitHub, allowing for contributions from subject-matter
-experts and future expansion of covered material. It can also be forked by
-parties interested in creating a more customized set of materials for their own
-trainings or courses. The website is written in the format of Jupyter Notebooks
-allowing code to be embedded inline with the explanatory material. It also
-allows entire webpages and their code examples to be launched directly into a
-Google Colab environment or downloaded directly and run locally, allowing
-learners to have an immediate connection between the teaching material and
-putting the principles into practice.</p>
-<p>As with many things in open-source, there’s always multiple ways to do the same
-thing. In this course, workflows will be presented with one approach, single
-tools will be introduced as if they’re the only option, and we usually won’t
-bother mentioning all the different possible system configurations. All the
-software we will be using is cross-platform, however. And, if you’d like to
-use a different tool, or a different code editor, if you have the know-how, go
-ahead! To keep things simple and standardized for us, however, we’ll give
-instructions just for one single method.</p>
-<p><strong>References</strong></p>
-<div class="docutils container" id="id4">
-<dl class="citation">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Ardavan F Oskooi, David Roundy, Mihai Ibanescu, Peter Bermel, John D Joannopoulos, and Steven G Johnson. Meep: a flexible free-software package for electromagnetic simulations by the fdtd method. <em>Computer Physics Communications</em>, 181(3):687–702, 2010.</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Sequoia Ploeg, Hyrum Gunther, and Ryan M Camacho. Simphony: an open-source photonic integrated circuit simulation framework. <em>Computing in Science &amp; Engineering</em>, 23(1):65–74, 2020.</p>
-</dd>
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>Joaquin Matres. Gdsfactory documentation. online, 2023. URL: <a class="reference external" href="https://gdsfactory.github.io/gdsfactory/">https://gdsfactory.github.io/gdsfactory/</a>.</p>
-</dd>
-</dl>
+  <section class="tex2jax_ignore mathjax_ignore" id="git-and-github">
+<h1>Git (and GitHub)<a class="headerlink" href="#git-and-github" title="Permalink to this headline">#</a></h1>
+<p>In programming, it is desirable to be able to track changes to your code over
+time. In development environments, it’s not uncommon that changes may need to
+be rolled back if they break something in production code. Version control
+systems (VCS) are also extremely helpful in collaborative environments, as they
+track who changed what and allow for simultaneous edits to be merged together
+rather painlessly.</p>
+<p>Git is the predominant VCS used by programmers today. While git is a command-
+line tool, an entire ecosystem of hosting services, GUI tools, and IDE’s have
+sprung up around it.</p>
+<p>To <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">install git</a> on your machine:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="b421f454-1757-4045-85bf-7422e1303d9c" name="e9525311-42f0-40d8-827e-ea862f9d2602" type="radio">
+</input><label class="sd-tab-label" data-sync-id="windows" for="b421f454-1757-4045-85bf-7422e1303d9c">
+Windows</label><div class="sd-tab-content docutils">
+<p>While you can install <a class="reference external" href="https://gitforwindows.org/">Git for Windows</a>, because
+the other software packages used in this course are Mac- or Linux-only, you
+will be forced to use WSL to complete this course on Windows. Still, we’ll
+provide a <a class="reference external" href="https://git-scm.com/download/win">download link</a> for git on Windows.</p>
 </div>
+<input id="171c3221-0248-4886-afde-8bf849fc1c1c" name="e9525311-42f0-40d8-827e-ea862f9d2602" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="171c3221-0248-4886-afde-8bf849fc1c1c">
+MacOS</label><div class="sd-tab-content docutils">
+<p>Git is included with XCode Command Line Tools. These can be installed from the
+terminal with the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xcode-select<span class="w"> </span>--install
+</pre></div>
+</div>
+<p>You can test the installation by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
+</pre></div>
+</div>
+</div>
+<input id="028b0bdd-ca5f-4af3-ada4-8e1c271cefd8" name="e9525311-42f0-40d8-827e-ea862f9d2602" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="028b0bdd-ca5f-4af3-ada4-8e1c271cefd8">
+Linux</label><div class="sd-tab-content docutils">
+<p>If git is not installed on your machine, you can install it through the terminal.</p>
+<p>Debian-based distributions (e.g. Ubuntu, Debian):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git-all
+</pre></div>
+</div>
+<p>RPM-based distributions (e.g. Fedora, RHEL, CentOS):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>git-all
+</pre></div>
+</div>
+</div>
+</div>
+<p>GitHub is the most well known hosting service, and it provides free accounts
+(and free private repositories) to all users. This bootcamp, for example, is
+hosted on GitHub, along with many of the most popular open-source Python
+projects (including numpy, scipy, and matplotlib). If you want to version
+control your code, we recommend creating an account on GitHub and keeping your
+source code there.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -467,17 +472,17 @@ instructions just for one single method.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="software.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">CamachoLab Photonics Bootcamp</p>
+            <p class="prev-next-title">Software</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="credits.html" title="next page">
+    <a class='right-next' id="next-link" href="python.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Credits</p>
+        <p class="prev-next-title">Python</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
