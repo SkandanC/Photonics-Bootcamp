@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon-laser.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python" href="python.html" />
+    <link rel="next" title="Visual Studio Code (vscode)" href="vscode.html" />
     <link rel="prev" title="Software" href="software.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
@@ -149,6 +149,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="vscode.html">
+     Visual Studio Code (vscode)
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="python.html">
      Python
     </a>
@@ -194,6 +199,33 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="waveguides.html">
+   Waveguides
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="waveguides_tir.html">
+     Total Internal Reflection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mode_solvers.html">
+     Waveguide modes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="polarization.html">
+     Polarization
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="directional_couplers.html">
    Directional Couplers
@@ -202,6 +234,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="y_branch.html">
    Y-Branches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mzi.html">
+   Mach-Zehnder Interferometer
   </a>
  </li>
  <li class="toctree-l1">
@@ -225,8 +262,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="compact_models.html">
    Compact Models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -402,16 +439,16 @@ line tool, an entire ecosystem of hosting services, GUI tools, and IDE’s have
 sprung up around it.</p>
 <p>To <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">install git</a> on your machine:</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="b421f454-1757-4045-85bf-7422e1303d9c" name="e9525311-42f0-40d8-827e-ea862f9d2602" type="radio">
-</input><label class="sd-tab-label" data-sync-id="windows" for="b421f454-1757-4045-85bf-7422e1303d9c">
+<input checked="checked" id="e2f7c35f-03ff-419c-af2d-20963d23c7ab" name="3a0a6496-712f-4ef1-90c9-97c149cef57f" type="radio">
+</input><label class="sd-tab-label" data-sync-id="windows" for="e2f7c35f-03ff-419c-af2d-20963d23c7ab">
 Windows</label><div class="sd-tab-content docutils">
 <p>While you can install <a class="reference external" href="https://gitforwindows.org/">Git for Windows</a>, because
 the other software packages used in this course are Mac- or Linux-only, you
 will be forced to use WSL to complete this course on Windows. Still, we’ll
 provide a <a class="reference external" href="https://git-scm.com/download/win">download link</a> for git on Windows.</p>
 </div>
-<input id="171c3221-0248-4886-afde-8bf849fc1c1c" name="e9525311-42f0-40d8-827e-ea862f9d2602" type="radio">
-</input><label class="sd-tab-label" data-sync-id="macos" for="171c3221-0248-4886-afde-8bf849fc1c1c">
+<input id="f9b0feda-4049-4ea0-85c6-3acaf195742e" name="3a0a6496-712f-4ef1-90c9-97c149cef57f" type="radio">
+</input><label class="sd-tab-label" data-sync-id="macos" for="f9b0feda-4049-4ea0-85c6-3acaf195742e">
 MacOS</label><div class="sd-tab-content docutils">
 <p>Git is included with XCode Command Line Tools. These can be installed from the
 terminal with the command:</p>
@@ -423,8 +460,8 @@ terminal with the command:</p>
 </pre></div>
 </div>
 </div>
-<input id="028b0bdd-ca5f-4af3-ada4-8e1c271cefd8" name="e9525311-42f0-40d8-827e-ea862f9d2602" type="radio">
-</input><label class="sd-tab-label" data-sync-id="linux" for="028b0bdd-ca5f-4af3-ada4-8e1c271cefd8">
+<input id="f28bec1c-a193-486a-92af-11f98380d59f" name="3a0a6496-712f-4ef1-90c9-97c149cef57f" type="radio">
+</input><label class="sd-tab-label" data-sync-id="linux" for="f28bec1c-a193-486a-92af-11f98380d59f">
 Linux</label><div class="sd-tab-content docutils">
 <p>If git is not installed on your machine, you can install it through the terminal.</p>
 <p>Debian-based distributions (e.g. Ubuntu, Debian):</p>
@@ -479,10 +516,10 @@ source code there.</p>
             <p class="prev-next-title">Software</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="python.html" title="next page">
+    <a class='right-next' id="next-link" href="vscode.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python</p>
+        <p class="prev-next-title">Visual Studio Code (vscode)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
